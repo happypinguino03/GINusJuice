@@ -12,14 +12,16 @@ CREATE TABLE IF NOT EXISTS utente (
     PRIMARY KEY(email)
   
 );
+DROP TABLE IF EXISTS prodotto;
 CREATE TABLE IF NOT EXISTS prodotto (
     prodotto_id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     descrizione varchar(1024),
     prezzo double  NOT NULL,
     iva enum('22','4','5'),
-    quantità INT NOT NULL,
+    quantità INT NOT NULL
    );
+DROP TABLE IF EXISTS ACQUISTA;
 CREATE TABLE IF NOT EXISTS ACQUISTA (
     prodotto_id INT NOT NULL,
     email varchar(256) NOT NULL,
