@@ -12,6 +12,21 @@ CREATE TABLE IF NOT EXISTS utente (
     PRIMARY KEY(email)
   
 );
+CREATE TABLE IF NOT EXISTS prodotto (
+    prodotto_id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descrizione varchar(1024),
+    prezzo double  NOT NULL,
+    iva enum('22','4','5'),
+    quantità INT NOT NULL,
+   );
+CREATE TABLE IF NOT EXISTS ACQUISTA (
+    prodotto_id INT NOT NULL,
+    email varchar(256) NOT NULL,
+     FOREIGN KEY (email) REFERENCES utente(email),
+     FOREIGN KEY (prodotto_id) REFERENCES utente(prodotto_id),
+    PRIMARY KEY( prodotto_id ,email)
+   );
 INSERT INTO utente (email, nome, cognome, password_hash, ruolo) VALUES
 ('mario.rossi@example.com', 'Mario', 'Rossi', 'cane', 0),
 ('anna.bianchi@example.com', 'Anna', 'Bianchi', 'pollo', 0),
