@@ -1,11 +1,11 @@
-package control;
+package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.Utente;
+import control.ConnectionPool;
 
 public class UtenteControl {
 	

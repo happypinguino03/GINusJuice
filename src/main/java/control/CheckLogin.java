@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Utente;
+import model.UtenteControl;
 /**
  * Servlet implementation class CheckLogin
  */

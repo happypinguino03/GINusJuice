@@ -12,12 +12,12 @@
 </head>
 <body>
 <%
-	Carrello carrello=(Carrello) session.getAttribute("aggiunti");
+	Carrello carrello=(Carrello) session.getAttribute("carrello");
 %>
 <h1>il tuo carrello</h1>
 <% for(Prodotto prodotto : carrello.getAggiunti() ) 
 	{%>
-	
+	<p> il prodotto : <%= prodotto.getNome() %> </p>
 	<% }%>
 </body>
 </html>
