@@ -66,6 +66,7 @@ public class ListaProdotti extends HttpServlet {
 			    // Aggiungere il nuovo oggetto Prodotto alla lista
 			    listaProdotti.add(prodotto);
 			}
+			System.out.println(listaProdotti);
 			HttpSession sessione=request.getSession();
 			sessione.setAttribute("listaProdotti", listaProdotti);
 			ps.close();

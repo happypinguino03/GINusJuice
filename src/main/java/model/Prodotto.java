@@ -1,6 +1,23 @@
 package model;
 
+import java.util.Objects;
+
 public class Prodotto {
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Prodotto other = (Prodotto) obj;
+		return id == other.id;
+	}
 	int id;
 	String nome;
 	String descrizione;
