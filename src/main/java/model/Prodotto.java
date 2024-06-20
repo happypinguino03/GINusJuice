@@ -27,6 +27,15 @@ public class Prodotto {
 		this.quantita=0;
 	}
 	
+	 public Prodotto(String id, String nome, String descrizione, String prezzo, String iva, String quantita) {
+	        this.id = Integer.parseInt(id);
+	        this.nome = nome;
+	        this.descrizione = descrizione;
+	        this.prezzo = Float.parseFloat(prezzo);
+	        this.iva = Integer.parseInt(iva);
+	        this.quantita = Integer.parseInt(quantita);
+	    }
+	
 	@Override
 	public String toString() {
 		return "Prodotto [id=" + id + ", nome=" + nome + ", descrizione=" + descrizione + ", prezzo=" + prezzo

@@ -62,7 +62,7 @@ public class ListaProdotti extends HttpServlet {
 			    prodotto.setPrezzo(rs.getFloat("prezzo"));
 			    prodotto.setIva(rs.getInt("iva"));
 			    prodotto.setQuantita(rs.getInt("quantità"));
-			    
+			    //System.out.println("nella servlet listaProdotti il prodotto vale : "+prodotto);
 			    // Aggiungere il nuovo oggetto Prodotto alla lista
 			    listaProdotti.add(prodotto);
 			}

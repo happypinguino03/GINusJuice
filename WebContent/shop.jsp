@@ -19,7 +19,15 @@
 <%for(Prodotto p:lista){
 %>
 <h3> <%= p.getNome() %>     </h3>
-
+<form action="AggiungiProdotto" method="post">
+<input type="hidden"  name="prodottoId" value=<%= p.getId() %> >
+<input type="hidden"  name="nome" value=<%= p.getNome() %> >
+<input type="hidden"  name="descrizione" value=<%= p.getNome() %> >
+<input type="hidden"  name="prezzo" value=<%= p.getPrezzo() %> >
+<input type="hidden"  name="iva" value=<%= p.getIva() %> >
+<input type="hidden"  name="quantita" value=<%= p.getQuantita() %> >
+<input type="submit" value="aggiungi">
+</form>
 <% 
 }
 %>
