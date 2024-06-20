@@ -11,6 +11,10 @@
 <title>Insert title here</title>
 </head>
 
+
+
+
+
 <body>
 <%
 	Carrello carrello=(Carrello) session.getAttribute("aggiunti");
