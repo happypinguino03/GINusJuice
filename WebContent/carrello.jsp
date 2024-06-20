@@ -3,6 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.Prodotto" %>
+<%@ page import="model.Carrello" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,13 +12,12 @@
 </head>
 <body>
 <%
-	ArrayList <Prodotto> aggiunti=(ArrayList<Prodotto>) session.getAttribute("aggiunti");
+	Carrello carrello=(Carrello) session.getAttribute("aggiunti");
 %>
 <h1>il tuo carrello</h1>
-<% for(Prodotto prodotto : aggiunti) 
+<% for(Prodotto prodotto : carrello.getAggiunti() ) 
 	{%>
-	<p> il tuo prodotto è <%= prodotto.getNome() %> </p>
-	<p> la quantità del tuo prodotto è : </p>
+	
 	<% }%>
 </body>
 </html>

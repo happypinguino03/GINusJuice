@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Carrello;
 import model.Prodotto;
 
 /**
@@ -18,7 +19,8 @@ import model.Prodotto;
 @WebServlet("/AggiungiProdotto")
 public class AggiungiProdotto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ArrayList <Prodotto> aggiunti= new ArrayList<>();
+	//private ArrayList <Prodotto> aggiunti= new ArrayList<>();
+	private Carrello c=new Carrello();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -52,8 +54,8 @@ public class AggiungiProdotto extends HttpServlet {
 		Prodotto prodotto=new Prodotto(id,nome,descrizione,prezzo,iva,quantita);
 		//System.out.println(prodotto);
 		HttpSession session=request.getSession();
-		aggiunti.add(prodotto);
-		session.setAttribute("aggiunti", aggiunti);
+		c.aggiungiProdotto(prodotto);
+		session.setAttribute("carrello", c);
 		response.sendRedirect(request.getContextPath()+"/shop.jsp");
 	}
 
