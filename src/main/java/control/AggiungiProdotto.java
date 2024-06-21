@@ -2,6 +2,8 @@ package control;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,6 +23,8 @@ public class AggiungiProdotto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//private ArrayList <Prodotto> aggiunti= new ArrayList<>();
 	private Carrello c=new Carrello();
+	Map<String, Integer> prodottiMap = new HashMap<>();
+
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -50,12 +54,15 @@ public class AggiungiProdotto extends HttpServlet {
 		String iva= request.getParameter("iva");// da convertire
 		String quantita= request.getParameter("quantita");// da convertire
 		//System.out.println("id "+id + " nome "+ nome+" descrizione "+ descrizione+ " prezzo "+ prezzo+ " iva " + iva+ " quantita "+quantita);
-		
 		Prodotto prodotto=new Prodotto(id,nome,descrizione,prezzo,iva,quantita);
 		//System.out.println(prodotto);
 		HttpSession session=request.getSession();
 		c.aggiungiProdotto(prodotto);
 		session.setAttribute("carrello", c);
+		//if(prodottiMap.containsKey(nome))//l'utente ha già selezionato il prodotto
+			//prodottiMap.put(nome, prodottiMap.get(nome)+1);
+		
+			
 		response.sendRedirect(request.getContextPath()+"/shop.jsp");
 	}
 

@@ -4,6 +4,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.Prodotto" %>
 <%@ page import="model.Carrello" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.HashMap" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,11 +15,30 @@
 <body>
 <%
 	Carrello carrello=(Carrello) session.getAttribute("carrello");
+    Map<Prodotto, Integer> prodottiMap = new HashMap<>();
+    for(Prodotto prodotto : carrello.getAggiunti())
+    {
+    if(prodottiMap.containsKey(prodotto))
+    	{
+    		prodottiMap.put(prodotto, prodottiMap.get(prodotto)+1);
+    	}
+    else
+    	{
+    		prodottiMap.put(prodotto, 1);
+    	}
+    }
+    System.out.println("mi trovo qui");
 %>
 <h1>il tuo carrello</h1>
-<% for(Prodotto prodotto : carrello.getAggiunti() ) 
+<% for( Map.Entry<Prodotto,Integer> entry : prodottiMap.entrySet() ) 
 	{%>
-	<p> il prodotto : <%= prodotto.getNome() %> </p>
+	<h4> <%= entry.getKey() %> </h4>
+	<h4> <%= entry.getValue() %></h4>
+	<form action="CarrelloAumenta" method="post">
+	<input type="hidden" value=<%= entry.getKey().getId() %> name="prodottoId">
+	<input type="submit" value="aggiungi">
+	</form>
 	<% }%>
+
 </body>
 </html>
