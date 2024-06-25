@@ -33,9 +33,9 @@ public class Carrello {
 		return aggiunti.stream().mapToDouble(p->p.getPrezzo()).sum();
 	}
 	
-	public void eliminaProdotto (String nome)
+	public void eliminaProdotto (Prodotto prodotto)
 	{
-		aggiunti.removeIf(prodotto->prodotto.getNome().equals(nome));
+		aggiunti.remove(prodotto);
 	}
 
 }

@@ -14,11 +14,17 @@
 <br>
 <%
 	ArrayList <Prodotto> lista=(ArrayList<Prodotto>) session.getAttribute("listaProdotti");
+	if(lista==null){
+		System.out.println("is null");
+	}else System.out.println("is not null");
 %>
 
-<%for(Prodotto p:lista){
+<%
+for(Prodotto p : lista){
+	System.out.println(p);
 %>
 <h3> <%= p.getNome() %>     </h3>
+<img alt="alchol" src="${pageContext.request.contextPath }/images/<%= p.getNome()%>.jpg" >
 <form action="AggiungiProdotto" method="post">
 <input type="hidden"  name="prodottoId" value=<%= p.getId() %> >
 <input type="hidden"  name="nome" value=<%= p.getNome() %> >

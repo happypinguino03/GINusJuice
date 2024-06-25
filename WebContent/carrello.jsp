@@ -14,31 +14,41 @@
 </head>
 <body>
 <%
-	Carrello carrello=(Carrello) session.getAttribute("carrello");
-    Map<Prodotto, Integer> prodottiMap = new HashMap<>();
-    for(Prodotto prodotto : carrello.getAggiunti())
-    {
-    if(prodottiMap.containsKey(prodotto))
-    	{
-    		prodottiMap.put(prodotto, prodottiMap.get(prodotto)+1);
-    	}
-    else
-    	{
-    		prodottiMap.put(prodotto, 1);
-    	}
-    }
-    System.out.println("mi trovo qui");
-%>
-<h1>il tuo carrello</h1>
-<% for( Map.Entry<Prodotto,Integer> entry : prodottiMap.entrySet() ) 
-	{%>
-	<h4> <%= entry.getKey() %> </h4>
-	<h4> <%= entry.getValue() %></h4>
-	<form action="CarrelloAumenta" method="post">
-	<input type="hidden" value=<%= entry.getKey().getId() %> name="prodottoId">
-	<input type="submit" value="aggiungi">
-	</form>
-	<% }%>
+    Carrello carrello = (Carrello) session.getAttribute("carrello");
 
+    // Verifica se il carrello è vuoto o non è stato inizializzato
+    if (carrello == null || carrello.getAggiunti().isEmpty()) {
+        // Messaggio o azione da mostrare se il carrello è vuoto
+        String nome = (String)session.getAttribute("user");
+        if(nome==null)
+        	nome="ospite";
+        %>
+        <h1>Il tuo carrello è vuoto.</h1>
+        <p>ciao <%= nome %> il tuo carrello è vuoto torna alla <a href="${pageContext.request.contextPath}/index.html">pagina dei prodotti</a> per iniziare lo shopping.</p>
+        <%
+    } else {
+        // Se il carrello contiene prodotti, procedi con la visualizzazione
+        Map<Prodotto, Integer> prodottiMap = new HashMap<>();
+        for (Prodotto prodotto : carrello.getAggiunti()) {
+            if (prodottiMap.containsKey(prodotto)) {
+                prodottiMap.put(prodotto, prodottiMap.get(prodotto) + 1);
+            } else {
+                prodottiMap.put(prodotto, 1);
+            }
+        }
+%>
+        <h1>Il tuo carrello</h1>
+        <% for (Map.Entry<Prodotto, Integer> entry : prodottiMap.entrySet()) { %>
+            <h4><%= entry.getKey() %></h4>
+            <h4><%= entry.getValue() %></h4>
+            <form action="CarrelloAumenta" method="post">
+                <input type="hidden" value="<%= entry.getKey().getId() %>" name="prodottoId">
+                <input type="submit" value="aggiungi">
+            </form>
+            <form action="CarrelloDiminuisci" method="post">
+                <input type="hidden" value="<%= entry.getKey().getId() %>" name="prodottoId">
+                <input type="submit" value="diminuisci">
+            </form>
+        <% } %>
+    <% } %>
 </body>
-</html>

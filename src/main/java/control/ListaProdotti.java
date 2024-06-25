@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.ListaProdottiDAO;
 import model.Prodotto;
 
 /**
@@ -23,7 +24,8 @@ import model.Prodotto;
 @WebServlet("/ListaProdotti")
 public class ListaProdotti extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	List <Prodotto> listaProdotti=new ArrayList<>();
+	private List <Prodotto> listaProdotti=new ArrayList<>();
+	private ListaProdottiDAO controllo= new ListaProdottiDAO();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -46,37 +48,19 @@ public class ListaProdotti extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		try {
-			Connection con=ConnectionPool.getConnection();
-			String sql="SELECT * FROM prodotto";
-			PreparedStatement ps=con.prepareStatement(sql);
-			ResultSet rs=ps.executeQuery();
-			while (rs.next()) {
-			    // Per ogni riga nel ResultSet, creare un nuovo oggetto Prodotto
-			    Prodotto prodotto = new Prodotto();
-			    
-			    // Impostare i campi del prodotto con i valori dal ResultSet
-			    prodotto.setId(rs.getInt("prodotto_id"));
-			    prodotto.setNome(rs.getString("nome"));
-			    prodotto.setDescrizione(rs.getString("descrizione"));
-			    prodotto.setPrezzo(rs.getFloat("prezzo"));
-			    prodotto.setIva(rs.getInt("iva"));
-			    prodotto.setQuantita(rs.getInt("quantità"));
-			    //System.out.println("nella servlet listaProdotti il prodotto vale : "+prodotto);
-			    // Aggiungere il nuovo oggetto Prodotto alla lista
-			    listaProdotti.add(prodotto);
-			}
-			System.out.println(listaProdotti);
-			HttpSession sessione=request.getSession();
-			sessione.setAttribute("listaProdotti", listaProdotti);
-			ps.close();
-			con.close();
-			response.sendRedirect(request.getContextPath()+"/shop.jsp");
-			//System.out.println(listaProdotti);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		HttpSession sessione= request.getSession();
+		/*per risolvere il fatto che ogni volta che clickiamo sullo sho usero una variabile di sessione che quando
+		 * varrà aggiungerà le cose nella lista(in seguito modifico la servlet per il problema admin) 
+		*/
+		List <Prodotto> listaProdottiServlet=new ArrayList<>();
+		listaProdotti= controllo.aggiungiNelloShop();
+		for( Prodotto p : listaProdotti)
+			if(!(listaProdottiServlet.contains(p)))
+				listaProdottiServlet.add(p);
+		sessione.setAttribute("listaProdotti", listaProdottiServlet);
+		
+		//System.out.println("nella sfaccim e servlet la lista vale :" +listaProdotti);
+		response.sendRedirect(request.getContextPath()+"/shop.jsp");
 	}
-
+	
 }
