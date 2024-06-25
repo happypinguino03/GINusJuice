@@ -1,3 +1,65 @@
+
+
+// Funzione per il carosello di immagini
+function startImageCarousel() {
+    const carouselContainer = document.querySelector('.carousel-container');
+    const images = document.querySelectorAll('#image-carousel img');
+    const totalImages = images.length;
+    const slideWidth = images[0].clientWidth; // Larghezza di ogni immagine (assume immagini di larghezza uniforme)
+    let currentIndex = 0; // Partiamo dalla prima immagine originale
+
+    // Clona tutte le immagini e aggiungile al container
+    images.forEach(img => {
+        const clone = img.cloneNode(true);
+        carouselContainer.appendChild(clone);
+    });
+
+    // Imposta la larghezza del container per accogliere tutte le immagini clonate
+    const newTotalImages = totalImages * 2; // Raddoppia il numero di immagini per il loop infinito
+    carouselContainer.style.width = `${newTotalImages * slideWidth}px`;
+
+    // Avvia il carosello
+    setInterval(() => {
+        currentIndex++;
+
+        // Applica la transizione per lo spostamento fluido tra le immagini
+        carouselContainer.style.transition = 'transform 0.5s ease';
+        carouselContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
+        // Quando raggiungiamo la fine delle immagini originali, riportiamo alla prima immagine senza transizione
+        if (currentIndex >= totalImages) {
+            setTimeout(() => {
+                carouselContainer.style.transition = 'none';
+                currentIndex = 0;
+                carouselContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+            }, 500); // Tempo che corrisponde alla durata della transizione CSS
+        }
+    }, 3000); // Cambia immagine ogni 3 secondi (puoi regolare il valore come preferisci)
+}
+
+
+
+// Esegui la funzione di controllo età quando la pagina si carica
+window.onload = function() {
+    var overlay = document.getElementById("overlay");
+    var ageConfirmation = document.getElementById("age-confirmation");
+
+    // Mostra l'overlay e il popup di conferma età
+    overlay.style.display = "flex";
+    ageConfirmation.style.display = "block";
+
+    // Centra il popup verticalmente
+    var overlayHeight = overlay.offsetHeight;
+    var ageConfirmationHeight = ageConfirmation.offsetHeight;
+    ageConfirmation.style.top = `${(overlayHeight - ageConfirmationHeight) / 2}px`;
+
+    // Aggiungi la classe blur per applicare lo sfondo sfocato
+    document.body.classList.add("blur");
+    
+    // Avvia il carosello di immagini
+    startImageCarousel();
+};
+
 // Funzione per chiudere la barra gialla di informazione sulla spedizione
 function closeShippingInfo() {
     document.getElementById("shipping-info").style.display = "none";
@@ -24,6 +86,9 @@ function checkAge(isAdult) {
     } else {
         // Se l'utente non è maggiorenne, mostra l'overlay e disabilita i link e i pulsanti della pagina
         overlay.style.display = "flex";
+        ageConfirmation.style.display = "block"; // Assicura che l'elemento sia visibile
+
+        // Aggiungi classe di sfocatura al body
         body.classList.add("blur");
 
         // Disabilita tutti i link e i pulsanti della pagina
@@ -39,41 +104,3 @@ function checkAge(isAdult) {
 function redirectToCocaCola() {
     window.location.href = "https://www.coca-cola.it";
 }
-
-// Funzione per il carosello di immagini
-function startImageCarousel() {
-    const images = document.querySelectorAll('#image-carousel img');
-    let currentIndex = 0;
-
-    setInterval(() => {
-        const previousIndex = currentIndex;
-        currentIndex = (currentIndex + 1) % images.length;
-
-        images[previousIndex].classList.remove('active');
-        images[previousIndex].classList.add('previous');
-
-        images[currentIndex].classList.add('active');
-        images[currentIndex].classList.remove('previous');
-    }, 3000);
-}
-
-// Esegui la funzione di controllo età quando la pagina si carica
-window.onload = function() {
-    var overlay = document.getElementById("overlay");
-    var ageConfirmation = document.getElementById("age-confirmation");
-
-    // Mostra l'overlay e il popup di conferma età
-    overlay.style.display = "flex";
-    ageConfirmation.style.display = "block";
-
-    // Centra il popup verticalmente
-    var overlayHeight = overlay.offsetHeight;
-    var ageConfirmationHeight = ageConfirmation.offsetHeight;
-    ageConfirmation.style.top = `${(overlayHeight - ageConfirmationHeight) / 2}px`;
-
-    // Aggiungi la classe blur per applicare lo sfondo sfocato
-    document.body.classList.add("blur");
-    
-    // Avvia il carosello di immagini
-    startImageCarousel();
-};
