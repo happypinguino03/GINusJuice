@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.Prodotto" %>
@@ -9,25 +9,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <%
     Carrello carrello = (Carrello) session.getAttribute("carrello");
-
-    // Verifica se il carrello è vuoto o non è stato inizializzato
+	double tot;
+	String email = (String)session.getAttribute("email");
+	String megaStringa="";
+    // Verifica se il carrello Ã¨ vuoto o non Ã¨ stato inizializzato
     if (carrello == null || carrello.getAggiunti().isEmpty()) {
-        // Messaggio o azione da mostrare se il carrello è vuoto
-        String nome = (String)session.getAttribute("user");
-        if(nome==null)
-        	nome="ospite";
+        // Messaggio o azione da mostrare se il carrello Ã¨ vuoto
+        tot=0;
+        if(email==null)
+        	email="ospite";
         %>
-        <h1>Il tuo carrello è vuoto.</h1>
-        <p>ciao <%= nome %> il tuo carrello è vuoto torna alla <a href="${pageContext.request.contextPath}/index.html">pagina dei prodotti</a> per iniziare lo shopping.</p>
+        <h1>Il tuo carrello Ã¨ vuoto.</h1>
+        <p>ciao <%= email %> il tuo carrello Ã¨ vuoto torna alla <a href="${pageContext.request.contextPath}/index.html">pagina dei prodotti</a> per iniziare lo shopping.</p>
         <%
     } else {
         // Se il carrello contiene prodotti, procedi con la visualizzazione
+        tot=carrello.ritornaTotale();
         Map<Prodotto, Integer> prodottiMap = new HashMap<>();
         for (Prodotto prodotto : carrello.getAggiunti()) {
             if (prodottiMap.containsKey(prodotto)) {
@@ -39,7 +42,7 @@
 %>
         <h1>Il tuo carrello</h1>
         <% for (Map.Entry<Prodotto, Integer> entry : prodottiMap.entrySet()) { %>
-            <h4><%= entry.getKey() %></h4>
+            <h4><%= entry.getKey().getNome() %></h4>
             <h4><%= entry.getValue() %></h4>
             <form action="CarrelloAumenta" method="post">
                 <input type="hidden" value="<%= entry.getKey().getId() %>" name="prodottoId">
@@ -51,4 +54,26 @@
             </form>
         <% } %>
     <% } %>
+    
+    <%
+    	if(carrello!=null)
+    	{
+    		//System.out.println("il carrello Ã¨ vuoto e la mega stringa vale : " + megaStringa);
+    		for(Prodotto p:carrello.getAggiunti())
+    		{
+    			megaStringa+= p.getNome()+ "   ";
+    		}
+    	}
+    %>
+    <% //System.out.println(megaStringa); %>
+   
+    <h3>il totale Ã¨ : <%= tot%></h3>
+    <form action="AcquistaProdotto" method="post">
+    <input type="hidden" value=<%=email %> name="email">
+    <input type="hidden" value=<%= tot %> name="totale">
+    <input type="hidden" value=<%= megaStringa %> name="puttana">
+    <input type="submit" value="acquista">
+    </form>
+    <h1> <%= megaStringa %></h1>
+ 
 </body>

@@ -14,7 +14,7 @@
             <input id="email" type="text" name="email" placeholder="Inserisci email">
             <br>
             <label for="password">Password</label>
-            <input id="password" type="password" name="password" placeholder="Inserisci password">
+            <input id="password" type="password" name="password" placeholder="password">
             <br>
             <input type="submit" value="Clicca qui per accedere">
         </fieldset>
