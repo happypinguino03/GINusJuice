@@ -100,19 +100,21 @@ body {
     color: #fff;
 }
 
-/* Stili per il menu di navigazione */
+
+/*hearder*/
 #navbar {
-    overflow: hidden;
-    background-color: #333;
-    position: fixed; /* Fissa il menu in cima alla pagina */
+    position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    z-index: 1000; /* Assicura che il menu sia sempre visibile sopra altri contenuti */
+    background-color: #333;
+    z-index: 1000;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
 }
+
 
 #navbar #logo {
     color: #fff;
@@ -148,6 +150,7 @@ body {
 #navbar #icons a:hover {
     color: #ddd;
 }
+
 
 /* Stili per la barra gialla di informazione sulla spedizione */
 #shipping-info {

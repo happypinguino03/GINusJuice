@@ -1,33 +1,60 @@
-body {
-    background: url('../images/sfondologin.gif') no-repeat center center fixed;
-    background-size: cover;
-    font-family: Arial, sans-serif;
+/* Reset dei margini e dei padding per l'HTML e il body */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
-fieldset {
-    background-color: rgba(255, 255, 255, 0.8);
+/* Stile per il contenitore principale della pagina */
+.page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+/* Stile per il contenitore del modulo di login */
+.login-container {
+    width: 300px; /* Larghezza del modulo di login */
     padding: 20px;
-    border-radius: 10px;
-    margin: auto;
-    width: 300px;
+    background-color: #ffffff; /* Colore di sfondo del modulo */
+    border: 1px solid #ccc; /* Bordo sottile */
+    border-radius: 5px; /* Angoli arrotondati */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombra leggera */
 }
 
+/* Stile per il form di login */
+#loginForm {
+    text-align: center; /* Centra i contenuti all'interno del form */
+}
+
+/* Stile per i campi di input e etichette */
 label, input {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
+    display: block; /* Mostra etichetta e input uno sotto l'altro */
+    margin-bottom: 10px; /* Spazio tra i campi */
 }
 
+/* Stile per il pulsante di invio */
 input[type="submit"] {
-    width: auto;
+    width: 100%;
+    padding: 10px;
     background-color: #4CAF50;
     color: white;
-    padding: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 input[type="submit"]:hover {
     background-color: #45a049;
 }
+
+/* Stile per il leggend e il titolo del form */
+legend {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+

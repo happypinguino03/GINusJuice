@@ -80,7 +80,11 @@ public class CheckLogin extends HttpServlet {
 				return null;
 			if(u.getPassword_hash().compareTo(password)==0|| u.getPassword_hash()==null)
 			{
+
 				System.out.println("ciao io sono antoniio"+u.getPassword_hash());
+				System.out.println("la pss vale:"+u.getPassword_hash());
+				System.out.println("tua padre è puttana "+password);
+
 				return u;
 			}
 			else 
@@ -90,4 +94,4 @@ public class CheckLogin extends HttpServlet {
 
 }
 
-}
+
