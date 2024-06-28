@@ -13,11 +13,11 @@
  <header id="navbar">
             <div id="logo">GINusJOI</div>
             <nav id="menu">
-                <a href="login.jsp" class="disabled" disabled>Login</a>
-                <a href="successo.jsp" class="disabled" disabled>Successo</a>
-                <a href="Logout" class="disabled" disabled>Logout</a>
-                <a href="ListaProdotti" method="post" class="disabled" disabled>Shop</a>
-                <a href="carrello.jsp" class="disabled" disabled>Carrello</a>
+                <a href="login.jsp" >Login</a>
+                <a href="index.jsp" >Home</a>
+                <a href="Logout">Logout</a>
+                <a href="ListaProdotti" method="post">Shop</a>
+                <a href="carrello.jsp" >Carrello</a>
             </nav>
             <div id="icons">
                 <a href="#" class="disabled" disabled><i class="fas fa-search"></i></a>

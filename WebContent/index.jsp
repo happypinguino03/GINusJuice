@@ -16,7 +16,7 @@
     <!-- Overlay di sfocatura per il contenuto principale -->
     <div id="main-content">
         <!-- Menu di navigazione -->
-         <!-- includi qui l'hearder-->>
+         <!-- includi qui l'hearder-->
          <jsp:include page="Fragment/hearder.jsp" />
        
         <!-- Contenuto della pagina -->
