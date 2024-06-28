@@ -44,7 +44,8 @@ public class CheckLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
-		System.out.println("la password all'inizio vale "+password);
+		System.out.println("tua mamma è puttana "+password);
+		System.out.println("tua mamma è puttana "+password);
 		Utente utente=controlloTutto(email,password);
 		if(utente==null)
 		{
@@ -75,7 +76,8 @@ public class CheckLogin extends HttpServlet {
 				return null;
 			if(u.getPassword_hash().compareTo(password)==0|| u.getPassword_hash()==null)
 			{
-				System.out.println(u.getPassword_hash());
+				System.out.println("la pss vale:"+u.getPassword_hash());
+				System.out.println("tua padre è puttana "+password);
 				return u;
 			}
 			else 

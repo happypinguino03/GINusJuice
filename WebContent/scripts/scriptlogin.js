@@ -1,30 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('loginForm');
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password');
-    let backgroundChanged = false;
 
     const changeBackground = () => {
-        if (!backgroundChanged) {
-            document.body.style.backgroundImage = 'url("../images/sfondologin.gif")';
-            backgroundChanged = true;
+        document.body.style.backgroundImage = 'url("../images/sfondologin.gif")';
+        document.body.style.backgroundSize = 'cover';
+    };
+
+    const validateForm = () => {
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+        if (email === '' || password === '') {
+            alert('Please fill in both fields.');
+            return false;
         }
+        return true;
     };
-
-    const handleFirstClick = () => {
-        changeBackground();
-        emailInput.removeEventListener('focus', handleFirstClick);
-        passwordInput.removeEventListener('focus', handleFirstClick);
-    };
-
-    emailInput.addEventListener('focus', handleFirstClick);
-    passwordInput.addEventListener('focus', handleFirstClick);
 
     form.addEventListener('submit', (event) => {
-        event.preventDefault(); // Impedisce l'invio del form immediato
-        // Usa setTimeout per ritardare l'invio del form e far vedere il cambio di sfondo
-        setTimeout(() => {
-            form.submit();
-        }, 2000); // Imposta un ritardo di 2 secondi
+        event.preventDefault(); // Evita l'invio immediato del modulo
+
+        if (validateForm()) {
+            // Centra il form
+            form.parentElement.style.display = 'flex';
+            form.parentElement.style.justifyContent = 'center';
+            form.parentElement.style.alignItems = 'center';
+
+            // Avvia l'animazione di sfondo
+            changeBackground();
+
+            // Ritarda l'invio del modulo per 2 secondi per mostrare l'animazione
+            setTimeout(() => {
+                form.submit();
+            }, 2000);
+        }
     });
 });
