@@ -49,7 +49,7 @@ public class CarrelloDiminuisci extends HttpServlet {
 		Carrello carrello=(Carrello) sessione.getAttribute("carrello");
 		carrello.eliminaProdotto(prodotto);
 		sessione.setAttribute("carrello", carrello);
-		response.sendRedirect(request.getContextPath()+"/index.html");
+		response.sendRedirect(request.getContextPath()+"/carrello.jsp");
 		
 	}
 

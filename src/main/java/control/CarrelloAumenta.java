@@ -50,7 +50,7 @@ public class CarrelloAumenta extends HttpServlet {
 		Carrello carrello=(Carrello) sessione.getAttribute("carrello");
 		carrello.aggiungiProdotto(prodotto);
 		sessione.setAttribute("carrello", carrello);
-		response.sendRedirect(request.getContextPath()+"/index.html");
+		response.sendRedirect(request.getContextPath()+"/carrello.jsp");
 	}
 
 }

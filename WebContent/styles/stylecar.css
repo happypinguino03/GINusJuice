@@ -1,0 +1,113 @@
+/* stylecar.css */
+
+body {
+    background-color: #000; /* Sfondo nero */
+    color: #fff; /* Testo bianco */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.empty-cart-message {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product {
+    display: flex;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    overflow: hidden;
+    width: calc(50% - 20px); /* Due colonne su schermi grandi */
+}
+
+.product:hover {
+    transform: translateY(-5px); /* Effetto di alzata su hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.product-image {
+    flex: 1; /* Occupa il 50% dello spazio del prodotto */
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px 0 0 10px;
+    transition: transform 0.3s ease;
+}
+
+.product-details {
+    flex: 1; /* Occupa l'altro 50% dello spazio del prodotto */
+    padding: 20px;
+}
+
+.product-details h4 {
+    margin-bottom: 10px;
+}
+
+.product-details p {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.center {
+    text-align: center;
+}
+
+.purchase-button, .clear-cart-button, .add-to-cart, .remove-from-cart {
+    background-color: #ff4500;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.purchase-button:hover, .clear-cart-button:hover, .add-to-cart:hover, .remove-from-cart:hover {
+    background-color: #e03e00;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .product {
+        width: 100%; /* Uno spazio pieno su schermi più piccoli */
+    }
+
+    .product-image img {
+        border-radius: 10px 10px 0 0; /* Angoli arrotondati solo sopra su schermi più piccoli */
+    }
+}
+
+/* Stili per i pulsanti "Acquista" e "Svuota" */
+.purchase-button, .clear-cart-button {
+    font-size: 1.2em; /* Ingrandimento del font */
+    width: calc(50% - 20px); /* Larghezza dei pulsanti */
+    margin-right: 10px; /* Margine destro tra i pulsanti */
+}
+
+/* Stili per i pulsanti "Aggiungi" e "Diminuisci" */
+.add-to-cart, .remove-from-cart {
+    font-size: 0.9em; /* Dimensione del font */
+    padding: 8px 16px; /* Dimensione del padding */
+}
+
