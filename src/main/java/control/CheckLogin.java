@@ -1,6 +1,8 @@
 package control;
 
 import java.io.IOException;
+import java.util.Random;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,7 +45,7 @@ public class CheckLogin extends HttpServlet {
 		Utente utente=controlloTutto(email,password);
 		if(utente==null)
 		{
-			System.out.println("l'utente è null mi trovo nell'if");
+			//System.out.println("l'utente è null mi trovo nell'if");
 			//response.sendRedirect(".WebContent/login.jsp");
 			String redirectURL = request.getContextPath() + "/login.jsp";
 			response.sendRedirect(redirectURL);
@@ -60,7 +62,7 @@ public class CheckLogin extends HttpServlet {
 			sessione.setAttribute("nome", utente.getNome());
 			sessione.setAttribute("cognome", utente.getCognome());
 			sessione.setAttribute("ruolo", utente.getRuolo());
-			//String redirectURL = request.getContextPath() + "/index.jsp";
+			sessione.setAttribute("autentificazione", utente.getEmail()+"1234567890");			//String redirectURL = request.getContextPath() + "/index.jsp";
 			//response.sendRedirect(redirectURL);
 
 
@@ -92,6 +94,7 @@ public class CheckLogin extends HttpServlet {
 				return null;
 		
 	}
+	
 
 }
 

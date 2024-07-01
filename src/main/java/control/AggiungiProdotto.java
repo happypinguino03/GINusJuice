@@ -39,7 +39,7 @@ public class AggiungiProdotto extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request,response);
 	}
 
 	/**
@@ -47,14 +47,18 @@ public class AggiungiProdotto extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String id =  request.getParameter("prodottoId");// da convertire
+		//String autentificazione=request.getSession(false).getAttribute("autentificazione")+"123456789";
+		//String email=request.getSession(false).getAttribute("email")+"123456789";
+		//if(!(autentificazione.equals(email)))
+			//	response.sendRedirect(request.getContextPath()+"/login.jsp");
+		String id =  request.getParameter("prodottoId");// da convertire		System.out.println(id);
 		String nome= request.getParameter("nome");
 		String descrizione= request.getParameter("descrizione");
 		String prezzo= request.getParameter("prezzo");// da convertire
 		String iva= request.getParameter("iva");// da convertire
 		String quantita= request.getParameter("quantita");// da convertire
 		//System.out.println("id "+id + " nome "+ nome+" descrizione "+ descrizione+ " prezzo "+ prezzo+ " iva " + iva+ " quantita "+quantita);
-		Prodotto prodotto=new Prodotto(id,nome,descrizione,prezzo,iva,quantita);
+		/*Prodotto prodotto=new Prodotto(id,nome,descrizione,prezzo,iva,quantita);
 		//System.out.println(prodotto);
 		HttpSession session=request.getSession();
 		c.aggiungiProdotto(prodotto);
@@ -63,7 +67,7 @@ public class AggiungiProdotto extends HttpServlet {
 			//prodottiMap.put(nome, prodottiMap.get(nome)+1);
 		
 			
-		response.sendRedirect(request.getContextPath()+"/shop.jsp");
+		response.sendRedirect(request.getContextPath()+"/shop.jsp");*/
 	}
 
 }
