@@ -23,5 +23,11 @@
 <label>QUANTITA'</label>
 <input type="text" placeholder="inserisci quantità" name="quantità">
 <input type="submit" value="aggiungi">
+</form>
+<form action="AggiungiImmagine" method="post" enctype="multipart/form-data">
+    <label>Immagine</label>
+    <input type="file" name="file" accept="image/*" required>
+    <input type="submit" value="Carica">
+</form>
 </body>
 </html>

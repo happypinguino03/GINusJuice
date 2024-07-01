@@ -31,7 +31,7 @@ public class CheckLogin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request,response);
 	}
 
 	/**
@@ -43,12 +43,15 @@ public class CheckLogin extends HttpServlet {
 		Utente utente=controlloTutto(email,password);
 		if(utente==null)
 		{
+			System.out.println("l'utente è null mi trovo nell'if");
 			//response.sendRedirect(".WebContent/login.jsp");
 			String redirectURL = request.getContextPath() + "/login.jsp";
 			response.sendRedirect(redirectURL);
+			return ;
 		}
 		else
 		{
+			System.out.println("l'utente non è null");
 			HttpSession oldSession= request.getSession(false);//se non esiste non la crea
 			if(oldSession!=null)
 				oldSession.invalidate();
@@ -57,15 +60,15 @@ public class CheckLogin extends HttpServlet {
 			sessione.setAttribute("nome", utente.getNome());
 			sessione.setAttribute("cognome", utente.getCognome());
 			sessione.setAttribute("ruolo", utente.getRuolo());
-			String redirectURL = request.getContextPath() + "/index.jsp";
-			response.sendRedirect(redirectURL);
+			//String redirectURL = request.getContextPath() + "/index.jsp";
+			//response.sendRedirect(redirectURL);
 
 
 		}
 		System.out.println(utente.getRuolo());
 		if(utente.getRuolo()==1)
 		{
-		response.sendRedirect(request.getContextPath()+"/pannelloControllo.jsp");
+		response.sendRedirect(request.getContextPath()+"/Admin/pannelloControllo.jsp");
 		//System.out.println(utente.getRuolo());
 		}
 		else

@@ -61,5 +61,9 @@
     <input type="hidden" value=<%= tot %> name="totale">
     <input type="submit" value="acquista">
     </form>
+    
+    <form action="SvuotaCarrello" method="post">
+    <input type="submit" value="svuota">
+    </form>
  
 </body>

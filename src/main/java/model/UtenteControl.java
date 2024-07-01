@@ -32,6 +32,7 @@ public class UtenteControl {
 			//System.out.println(u);
 			ps.close();
 			con.close();
+			System.out.println("nella funzione l'utente vale"+u);
 			return u;
 			
 		} catch (SQLException e) {

@@ -22,16 +22,16 @@
     <%
         ArrayList<Prodotto> lista = (ArrayList<Prodotto>) session.getAttribute("listaProdotti");
         if(lista == null){
-            System.out.println("is null");
+           // System.out.println("is null");
         } else {
-            System.out.println("is not null");
+           // System.out.println("is not null");
         }
     %>
 
     <div class="product-grid">
     <%
         for(Prodotto p : lista){
-            System.out.println(p);
+            //System.out.println(p);
     %>
         <div class="product">
             <div class="product-image">
