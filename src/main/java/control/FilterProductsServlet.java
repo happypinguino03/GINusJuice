@@ -17,8 +17,8 @@ public class FilterProductsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Recupera i parametri di filtro dal frontend
-        int minPrice = Integer.parseInt(request.getParameter("minPrice"));
-        int maxPrice = Integer.parseInt(request.getParameter("maxPrice"));
+        double minPrice = Double.parseDouble(request.getParameter("minPrice"));
+        double maxPrice = Double.parseDouble(request.getParameter("maxPrice"));
 
         // Recupera la lista dei prodotti dal contesto della sessione
         ArrayList<Prodotto> listaProdotti = (ArrayList<Prodotto>) request.getSession().getAttribute("listaProdotti");

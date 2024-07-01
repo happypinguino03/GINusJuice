@@ -1,0 +1,101 @@
+@charset "UTF-8";
+/* Reset CSS generale */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Stili per il corpo della pagina */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+/* Stili per il contenuto principale dell'admin */
+.admin-content {
+    margin-top: 80px; /* Altezza del menu + spazio extra sopra il contenuto */
+    padding: 20px;
+}
+
+/* Stili per i titoli */
+.admin-content h1, .admin-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Stili per i link di azione dell'admin */
+.admin-action {
+    display: block;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 10px auto;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.admin-action:hover {
+    background-color: #0056b3;
+}
+
+/* Stili per i form dell'admin */
+.admin-form {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 5px;
+    max-width: 500px;
+}
+
+.admin-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.admin-form input[type="text"], .admin-form textarea, .admin-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.admin-form input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Stili per la gestione dei prodotti */
+.product-management {
+    background-color: #444;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 5px;
+    max-width: 600px;
+}
+
+.product-management h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Stili per il contenuto principale */
+#main-content {
+    margin-top: 80px; /* Altezza del menu + spazio extra sopra il contenuto */
+}
+
+

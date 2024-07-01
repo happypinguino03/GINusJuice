@@ -56,8 +56,8 @@
 </div>
 
 <form id="filterForm">
-    Prezzo Minimo: <input type="text" id="minPrice" name="minPrice">
-    Prezzo Massimo: <input type="text" id="maxPrice" name="maxPrice">
+    Prezzo Minimo: <input type="number" id="minPrice" name="minPrice" step="0.01">
+    Prezzo Massimo: <input type="number" id="maxPrice" name="maxPrice" step="0.01">
     <button type="button" onclick="filterProducts()">Applica Filtro</button>
 </form>
 
