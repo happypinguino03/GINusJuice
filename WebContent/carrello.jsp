@@ -41,7 +41,7 @@
 %>
         <h1>Il tuo carrello</h1>
         <% for (Map.Entry<Prodotto, Integer> entry : prodottiMap.entrySet()) { %>
-            <h4><%= entry.getKey().getNome() %></h4>
+            <h4><%= entry.getKey().getNome().substring(0,entry.getKey().getNome().length()-4) %></h4>
             <h4><%= entry.getValue() %></h4>
             <form action="CarrelloAumenta" method="post">
                 <input type="hidden" value="<%= entry.getKey().getId() %>" name="prodottoId">

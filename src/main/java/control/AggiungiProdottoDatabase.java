@@ -13,7 +13,7 @@ import model.Prodotto;
 /**
  * Servlet implementation class AggiungiProdottoDatabase
  */
-@WebServlet("/AggiungiProdottoDatabase")
+@WebServlet("/Admin/AggiungiProdottoDatabase")
 public class AggiungiProdottoDatabase extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProdottoDAO prodottoDAO=new ProdottoDAO();
@@ -47,7 +47,7 @@ public class AggiungiProdottoDatabase extends HttpServlet {
 		String quantita= request.getParameter("quantità");
 		Prodotto p=new Prodotto(id,nome,descrizione,prezzo,iva,quantita);
 		prodottoDAO.inserisciProdotto(p);
-		response.sendRedirect(request.getContextPath()+"/pannelloControllo.jsp");
+		response.sendRedirect(request.getContextPath()+"/Admin/pannelloControllo.jsp");
 	}
 
 }
