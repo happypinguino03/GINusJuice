@@ -12,7 +12,7 @@ import model.ProdottoDAO;
 /**
  * Servlet implementation class EliminaProdotto
  */
-@WebServlet("/EliminaProdotto")
+@WebServlet("/Admin/EliminaProdotto")
 public class EliminaProdotto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProdottoDAO prodottoDAO=new ProdottoDAO();
@@ -40,7 +40,7 @@ public class EliminaProdotto extends HttpServlet {
 		// TODO Auto-generated method stub
 		int id = Integer.parseInt(request.getParameter("id"));
 		prodottoDAO.eliminaProdotto(id);
-		response.sendRedirect(request.getContextPath()+"/pannelloControllo.jsp");
+		response.sendRedirect(request.getContextPath()+"/Admin/pannelloControllo.jsp");
 	}
 
 }

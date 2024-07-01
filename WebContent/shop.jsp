@@ -27,10 +27,12 @@
         %>
         <div class="product">
             <div class="product-image">
-                <img alt="<%= p.getNome() %>" src="${pageContext.request.contextPath}/images/<%= p.getNome() %>.jpg">
+
+
+                <img alt="<%= p.getNome() %>" src="${pageContext.request.contextPath }/images/<%= p.getNome() %>">
             </div>
             <div class="product-details">
-                <h3 class="product-name"> <%= p.getNome() %> </h3>
+                <h3 class="product-name"> <%= p.getNome().substring(0,p.getNome().length()-4) %> </h3>
                 <p class="product-description"><strong>Descrizione:</strong> <%= p.getDescrizione() %></p>
                 <p class="product-price"><strong>Prezzo:</strong> <%= p.getPrezzo() %>&#8364;</p>
                 <p class="product-quantity"><strong>Quantità rimanente in magazzino:</strong> <%= p.getQuantita() %></p>

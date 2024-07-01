@@ -15,7 +15,7 @@ import javax.servlet.http.Part;
 /**
  * Servlet implementation class AggiungiImmagine
  */
-@WebServlet("/AggiungiImmagine")
+@WebServlet("/Admin/AggiungiImmagine")
 @MultipartConfig(
 	    fileSizeThreshold = 1024 * 1024 * 2,  // 2MB
 	    maxFileSize = 1024 * 1024 * 10,       // 10MB
@@ -44,11 +44,11 @@ public class AggiungiImmagine extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      String uploadDir=request.getServletContext().getRealPath("WebContent/images");
+      String uploadDir=request.getServletContext().getRealPath("images/");
       Part filePart=request.getPart("file");
       String fileName=filePart.getSubmittedFileName();
       String filePath=uploadDir+fileName;
-      filePart.write("/GINiusJuice/WebContent/images"+fileName);
+      filePart.write(filePath);
     }
 
     // Metodo per ottenere il percorso di upload, gestisce il fallback se getRealPath non è affidabile

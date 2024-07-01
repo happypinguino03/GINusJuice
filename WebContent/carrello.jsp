@@ -45,6 +45,7 @@
         }
 %>
         <h1>Il tuo carrello</h1>
+
         <!-- Contenitore orizzontale per i prodotti nel carrello -->
         <div id="products-container">
             <% for (Map.Entry<Prodotto, Integer> entry : prodottiMap.entrySet()) { %>
@@ -53,7 +54,7 @@
                         <img src="${pageContext.request.contextPath}/images/<%= entry.getKey().getNome() %>.jpg" alt="<%= entry.getKey().getNome() %>">
                     </div>
                     <div class="product-details">
-                        <h4><%= entry.getKey().getNome() %></h4>
+                         <h4><%= entry.getKey().getNome().substring(0,entry.getKey().getNome().length()-4) %></h4>
                         <p><strong>Prezzo:</strong> <%= entry.getKey().getPrezzo() %> <span>&euro;</span></p>
                         <p><strong>Quantità:</strong> <%= entry.getValue() %></p>
                         <!-- Form per aumentare la quantità -->
@@ -70,6 +71,7 @@
                 </div>
             <% } %>
         </div>
+
     <% } %>
     
     <h3>Il totale è: <%= tot %> <span>&euro;</span></h3>
