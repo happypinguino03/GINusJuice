@@ -17,7 +17,6 @@
     Carrello carrello = (Carrello) session.getAttribute("carrello");
 	double tot;
 	String email = (String)session.getAttribute("email");
-	String megaStringa="";
     // Verifica se il carrello è vuoto o non è stato inizializzato
     if (carrello == null || carrello.getAggiunti().isEmpty()) {
         // Messaggio o azione da mostrare se il carrello è vuoto
@@ -55,25 +54,12 @@
         <% } %>
     <% } %>
     
-    <%
-    	if(carrello!=null)
-    	{
-    		//System.out.println("il carrello è vuoto e la mega stringa vale : " + megaStringa);
-    		for(Prodotto p:carrello.getAggiunti())
-    		{
-    			megaStringa+= p.getNome()+ "   ";
-    		}
-    	}
-    %>
-    <% //System.out.println(megaStringa); %>
    
     <h3>il totale è : <%= tot%></h3>
     <form action="AcquistaProdotto" method="post">
     <input type="hidden" value=<%=email %> name="email">
     <input type="hidden" value=<%= tot %> name="totale">
-    <input type="hidden" value=<%= megaStringa %> name="puttana">
     <input type="submit" value="acquista">
     </form>
-    <h1> <%= megaStringa %></h1>
  
 </body>

@@ -60,10 +60,10 @@ public class CheckLogin extends HttpServlet {
 			sessione.setAttribute("ruolo", utente.getRuolo());
 		}
 		System.out.println(utente.getRuolo());
-		if(utente.getRuolo()!=1)
+		if(utente.getRuolo()==1)
 		{
 		response.sendRedirect(request.getContextPath()+"/pannelloControllo.jsp");
-		System.out.println(utente.getRuolo());
+		//System.out.println(utente.getRuolo());
 		}
 		else
 			response.sendRedirect(request.getContextPath()+"/index.jsp");
@@ -80,11 +80,6 @@ public class CheckLogin extends HttpServlet {
 				return null;
 			if(u.getPassword_hash().compareTo(password)==0|| u.getPassword_hash()==null)
 			{
-
-				System.out.println("ciao io sono antoniio"+u.getPassword_hash());
-				System.out.println("la pss vale:"+u.getPassword_hash());
-				System.out.println("tua padre è puttana "+password);
-
 				return u;
 			}
 			else 

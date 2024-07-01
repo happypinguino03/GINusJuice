@@ -7,6 +7,7 @@ public class Ordine {
 	private String email;
 	private double totale;
 	private Date createdAt;
+	private String dataStringa;
 	
 
 	public int getOrdineId() {
@@ -50,5 +51,19 @@ public class Ordine {
 		this.totale = totale;
 		this.createdAt = createdAt;
 		
+	}
+	public Ordine(int ordineId, String email, double totale, String stringa) {
+		super();
+		this.ordineId = ordineId;
+		this.email = email;
+		this.totale = totale;
+		this.createdAt = null;
+		this.dataStringa=stringa;
+	}
+	public String getDataStringa() {
+		return dataStringa;
+	}
+	public void setDataStringa(String dataStringa) {
+		this.dataStringa = dataStringa;
 	}
 }

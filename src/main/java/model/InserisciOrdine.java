@@ -11,9 +11,9 @@ import control.ConnectionPool;
 
 public class InserisciOrdine {
 
-    public boolean inserisci(String email, double totale,String acquisti) {
+    public boolean inserisci(String email, double totale) {
         try {
-            Connection con = ConnectionPool.getConnection(); // Assumendo che ConnectionPool gestisca la connessione al database
+            Connection con = ConnectionPool.getConnection(); 
 
             // Ottieni la data e l'ora correnti
             LocalDateTime currentDateTime = LocalDateTime.now();
@@ -23,13 +23,12 @@ public class InserisciOrdine {
             String formattedDateTime = currentDateTime.format(formatter);
 
             // Prepara e esegui l'inserimento dell'ordine
-            String sql = "INSERT INTO ordine (ordine_id, email, totale, created_at,acquisti) VALUES (NULL, ?, ?, ?,?)";
+            String sql = "INSERT INTO ordine (ordine_id, email, totale, created_at) VALUES (NULL, ?, ?, ?)";
             //System.out.println(acquisti);
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, email);
             ps.setDouble(2, totale);
             ps.setTimestamp(3, Timestamp.valueOf(currentDateTime));
-            ps.setString(4, acquisti);
             int rowsInserted = ps.executeUpdate();
             con.close();
             ps.close();
