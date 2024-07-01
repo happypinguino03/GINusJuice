@@ -1,10 +1,6 @@
 package control;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,14 +10,14 @@ import javax.servlet.http.HttpSession;
 
 import model.Utente;
 import model.UtenteControl;
+
 /**
  * Servlet implementation class CheckLogin
  */
 @WebServlet("/CheckLogin")
 public class CheckLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private UtenteControl utenteC=new UtenteControl();
-       
+    private UtenteControl utenteC= new UtenteControl();   
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -44,8 +40,6 @@ public class CheckLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
-		System.out.println("tua mamma è puttana "+password);
-		System.out.println("tua mamma è puttana "+password);
 		Utente utente=controlloTutto(email,password);
 		if(utente==null)
 		{
@@ -65,8 +59,21 @@ public class CheckLogin extends HttpServlet {
 			sessione.setAttribute("ruolo", utente.getRuolo());
 			String redirectURL = request.getContextPath() + "/index.jsp";
 			response.sendRedirect(redirectURL);
+
+
 		}
+		System.out.println(utente.getRuolo());
+		if(utente.getRuolo()==1)
+		{
+		response.sendRedirect(request.getContextPath()+"/pannelloControllo.jsp");
+		//System.out.println(utente.getRuolo());
+		}
+		else
+			response.sendRedirect(request.getContextPath()+"/index.jsp");
 	}
+	
+	
+	
 	
 	private Utente controlloTutto(String email,String password)
 	{
@@ -76,8 +83,6 @@ public class CheckLogin extends HttpServlet {
 				return null;
 			if(u.getPassword_hash().compareTo(password)==0|| u.getPassword_hash()==null)
 			{
-				System.out.println("la pss vale:"+u.getPassword_hash());
-				System.out.println("tua padre è puttana "+password);
 				return u;
 			}
 			else 
@@ -86,3 +91,5 @@ public class CheckLogin extends HttpServlet {
 	}
 
 }
+
+

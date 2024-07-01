@@ -1,6 +1,8 @@
 package control;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,21 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Carrello;
-import model.InserisciOrdine;
+import model.Ordine;
+import model.OrdineDAO;
 
 /**
- * Servlet implementation class AcquistaProdotto
+ * Servlet implementation class VediOrdini
  */
-@WebServlet("/AcquistaProdotto")
-public class AcquistaProdotto extends HttpServlet {
+@WebServlet("/VediOrdini")
+public class VediOrdini extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private InserisciOrdine ordine=new InserisciOrdine();
+	private OrdineDAO ordineDAO=new OrdineDAO();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AcquistaProdotto() {
+    public VediOrdini() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,22 +42,13 @@ public class AcquistaProdotto extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String email= request.getParameter("email");
-		double tot=Float.parseFloat(request.getParameter("totale"));
-		// Verifica se il parametro coseComprate è nullo o vuoto
-	  // System.out.println("stiamo nella servlet e l'email vale: "+email+" il totale invece vale "+ tot+" coseComprate vale : "+ coseComprate);
+		String data1=request.getParameter("data1");
+		String data2=request.getParameter("data2");
+		String email=request.getParameter("email");
+		List<Ordine> lista=ordineDAO.prendiOrdini(email, data1, data2);
 		HttpSession sessione= request.getSession();
-		//sessione.setAttribute("carrello", null);
-		Carrello c=(Carrello) sessione.getAttribute("carrello");
-		c.getAggiunti().clear();
-		sessione.setAttribute("carrello", c);
-		
-		if(ordine.inserisci(email, tot))
-		{
-			System.out.println("ok");
-		}
-		else
-			System.out.print("non tutto apposto");
+		sessione.setAttribute("ordini", lista);
+		response.sendRedirect(request.getContextPath()+"/ordini.jsp");
 	}
 
 }
