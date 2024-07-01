@@ -1,37 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('loginForm');
 
-    const changeBackground = () => {
-        document.body.style.backgroundImage = 'url("../images/sfondologin.gif")';
-        document.body.style.backgroundSize = 'cover';
+    // Funzione per pre-caricare l'immagine di sfondo
+    const preloadBackground = (url) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = () => {
+            document.querySelector('.login-container').style.backgroundImage = `url('${url}')`;
+            document.querySelector('.login-container').classList.add('loaded');
+        };
     };
 
+    // Pre-carica l'immagine di sfondo
+    preloadBackground('images/sfondologin.gif');
+
+    // Funzione per validare il form
     const validateForm = () => {
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value.trim();
         if (email === '' || password === '') {
-            alert('Please fill in both fields.');
+            alert('Per favore, riempi entrambi i campi.');
             return false;
         }
         return true;
     };
 
+    // Aggiungi un gestore di eventi per il submit del form
     form.addEventListener('submit', (event) => {
-        event.preventDefault(); // Evita l'invio immediato del modulo
-
-        if (validateForm()) {
-            // Centra il form
-            form.parentElement.style.display = 'flex';
-            form.parentElement.style.justifyContent = 'center';
-            form.parentElement.style.alignItems = 'center';
-
-            // Avvia l'animazione di sfondo
-            changeBackground();
-
-            // Ritarda l'invio del modulo per 2 secondi per mostrare l'animazione
-            setTimeout(() => {
-                form.submit();
-            }, 2000);
+        if (!validateForm()) {
+            event.preventDefault(); // Impedisce l'invio del form se la validazione fallisce
         }
     });
 });

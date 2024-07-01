@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -20,7 +21,7 @@
                     <label for="password">Password</label>
                     <input id="password" type="password" name="password" placeholder="Inserisci password" required>
                     <br>
-                    <input type="submit" value="Clicca qui per accedere">
+                    <input type="submit" value="Accedi">
                 </fieldset>
             </form>
         </div>
@@ -31,4 +32,3 @@
 
 </body>
 </html>
-
