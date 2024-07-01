@@ -6,26 +6,25 @@
     <meta charset="UTF-8">
     <title>Il tuo titolo</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/styleindex.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="scripts/scriptindex.js"></script>
 </head>
 <body>
-
-    
-  
+<%
+String nome = (session.getAttribute("nome") != null) ? (String) session.getAttribute("nome") : "ospite";
+%>
     <!-- Overlay di sfocatura per il contenuto principale -->
     <div id="main-content">
         <!-- Menu di navigazione -->
-         <!-- includi qui l'hearder-->
-         <jsp:include page="Fragment/hearder.jsp" />
+        <jsp:include page="Fragment/hearder.jsp" />
        
         <!-- Contenuto della pagina -->
         <main class="content">
             <!-- Sezione "Chi siamo" -->
             <div id="about-us">
                 <div class="description">
+                    <h2>Benvenuto, <%= nome %>!</h2>
                     <h1>Chi siamo?</h1>
-                    <p><h3>Siamo due studenti universitari appassionati di mixologia e buon bere. Abbiamo fondato GINusJOI con l'obiettivo di offrire ai nostri clienti una vasta selezione di gin di alta qualità, accompagnata da consigli e ricette per creare cocktail unici. Il nostro sito di e-commerce è progettato per fornire un'esperienza di shopping semplice e piacevole, dove gli amanti del gin possono esplorare le nostre offerte, ricevere consigli personalizzati e trovare tutto ciò di cui hanno bisogno per godersi un drink perfetto, speriamo di essere idonei.</h3></p>
+                    <p><h3>Siamo due studenti universitari appassionati di mixologia e buon bere. Abbiamo fondato GINusJOI con l'obiettivo di offrire ai nostri clienti una vasta selezione di gin di alta qualità, accompagnata da consigli e ricette per creare cocktail unici. Il nostro sito di e-commerce è progettato per fornire un'esperienza di shopping semplice e piacevole, dove gli amanti del gin possono esplorare le nostre offerte, ricevere consigli personalizzati e trovare tutto ciò di cui hanno bisogno per godersi un drink perfetto, speriamo di essere idonei.</h3>
                 </div>
                 <div class="image">
                     <img src="images/imm_desc.jpg" alt="Immagine illustrativa">
@@ -61,10 +60,9 @@
             </div>
         </div>
 
-       <!-- includi qui il footer-->>
-       <jsp:include page="Fragment/footer.jsp" />
-       
-       
+        <jsp:include page="Fragment/footer.jsp" />
+
+    </div>
 
     <!-- Overlay per il popup di conferma età -->
     <div id="overlay">
@@ -77,3 +75,4 @@
 
 </body>
 </html>
+

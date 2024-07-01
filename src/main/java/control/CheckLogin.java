@@ -63,7 +63,7 @@ public class CheckLogin extends HttpServlet {
 			sessione.setAttribute("nome", utente.getNome());
 			sessione.setAttribute("cognome", utente.getCognome());
 			sessione.setAttribute("ruolo", utente.getRuolo());
-			String redirectURL = request.getContextPath() + "/successo.jsp";
+			String redirectURL = request.getContextPath() + "/index.jsp";
 			response.sendRedirect(redirectURL);
 		}
 	}

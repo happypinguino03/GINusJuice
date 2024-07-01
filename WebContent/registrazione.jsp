@@ -1,27 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Registrazione - GINusJOI</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/styleregistrazione.css">
+    <script src="${pageContext.request.contextPath}/scripts/scriptregistrazione.js" defer></script>
 </head>
 <body>
-<form action="RegistrazioneControl" method="post">
-	<label>email</label>
-	<input type="text" name="email" placeholder="inserisci email">
-	<br>
-	<label>nome</label>
-	<input type="text" name="nome" placeholder="inserisci nome">
-	<br>
-	<label>cognome</label>
-	<input type="text" name="cognome" placeholder="inserisci cognome">
-	<br>
-	<label>password</label>
-	<input type="text" name="password_hash" placeholder="inserisci password">
-	<br>
-	<input type="submit" value="registrati">
-	<br>
-</form>
+    <%@ include file="Fragment/herdershop.jsp" %>
+
+    <div class="page-container">
+        <div class="registration-container">
+            <form id="registrationForm" action="RegistrazioneControl" method="post">
+                <fieldset>
+                    <legend>Registrazione</legend>
+                    <label for="email">Email</label>
+                    <input id="email" type="text" name="email" placeholder="Inserisci email" required>
+                    <br>
+                    <label for="nome">Nome</label>
+                    <input id="nome" type="text" name="nome" placeholder="Inserisci nome" required>
+                    <br>
+                    <label for="cognome">Cognome</label>
+                    <input id="cognome" type="text" name="cognome" placeholder="Inserisci cognome" required>
+                    <br>
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="password_hash" placeholder="Inserisci password" required>
+                    <br>
+                    <input type="submit" value="Registrati">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <%@ include file="Fragment/footer.jsp" %>
+
 </body>
 </html>
